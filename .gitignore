@@ -17,5 +17,27 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# JetBrains IDEs
+.idea/
+
+# VSCode
+.vscode/
+
 # Go workspace file
 go.work
+
+# Folders
+bin/
+obj/
+pkg/
+
+# Eclipse files
+.settings/
+.project
+.classpath
+
+# macOS files
+.DS_Store
+
+# Thumbnails
+._*
