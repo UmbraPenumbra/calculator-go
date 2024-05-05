@@ -44,9 +44,6 @@ func parsNumber(x, y int, a string) int {
 		case "*":
 			res = x * y
 		case "/":
-			if y == 0 {
-				panic("Ошибка! Деление на ноль")
-			}
 			res = x / y
 		}
 		return res
