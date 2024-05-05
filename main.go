@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -9,10 +11,22 @@ import (
 const op = "+-*/"
 
 func main() {
-	fmt.Print("Введи арифметическое выражение в формате \"x оператор y\", где x и y - целые числа не больше 10 (арбские или римские):\n")
-	var x, a, y string
-	fmt.Scan(&x, &a, &y)
-	fmt.Println(result(x, a, y))
+	fmt.Print("Введите арифметическую операцию (например, '2 + 3'):\n")
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input) // Удаление символа новой строки
+
+	parts := strings.Fields(input)
+	if len(parts) != 3 {
+		panic("Ошибка! Формат арифметической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
+	}
+
+	operator := parts[1]
+	if !strings.ContainsAny(operator, op) {
+		panic("Ошибка! Второй элемент ввода не является оператором.")
+	}
+
+	fmt.Println(result(parts[0], operator, parts[2]))
 }
 
 func result(x, a, y string) string {
